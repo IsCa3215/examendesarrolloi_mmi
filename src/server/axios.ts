@@ -15,5 +15,13 @@
       }
     }
   
-
+    static async updateGroups(groups: DataValve[]): Promise<DataValve[]> {
+      try {
+        const response = await axios.post<DataValve[]>(`${this.BASE_URL}/items`, groups);
+        return response.data;
+      } catch (error) {
+        console.error('Errol en las valves', error);
+        return groups;
+      }
+    }
   }
